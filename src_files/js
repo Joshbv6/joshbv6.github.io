@@ -26133,7 +26133,7 @@ import {
     BREAKPOINTS
 } from "../constants";*/
 
-/*export default*/ class Preloader {
+/*export default class Preloader {
     constructor(siteState) {
         this.siteState = siteState;
         
@@ -26141,7 +26141,7 @@ import {
         this.DOM.preloader = getEl('.site-preloader');
 
         this.init();
-    }
+    }*/
 
     init() {
         this.initSubscriptions();
