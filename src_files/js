@@ -3499,8 +3499,8 @@ ft();Xe();Re=Z;Se=Fy;xf=new wf;cG();CH();Tk();Sw();Ft();gw=!1;"complete"===G.rea
     return _handleSubmit.apply(this, arguments);
   }
   
-  function _handleSubmit() {
-    _handleSubmit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+  /*function _handleSubmit() {
+    _handleSubmit = _asyncToGenerator( /*#__PURE__*//*regeneratorRuntime.mark(function _callee(event) {
       var status, data;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -3546,7 +3546,7 @@ ft();Xe();Re=Z;Se=Fy;xf=new wf;cG();CH();Tk();Sw();Ft();gw=!1;"complete"===G.rea
   
   form.addEventListener("submit", handleSubmit);
   
-  /***/ }),
+  /***/ /*}),
   
   /***/ "./src/js/sections/Portfolio.js":
   /*!**************************************!*\
