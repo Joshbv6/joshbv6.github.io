@@ -26121,7 +26121,7 @@ ft();Xe();Re=Z;Se=Fy;xf=new wf;cG();CH();Tk();Sw();Ft();gw=!1;"complete"===G.rea
   ;
   //# sourceMappingURL=main.js.map
 
-  import anime from 'animejs/lib/anime.es.js';
+ /* import anime from 'animejs/lib/anime.es.js';
 import { 
     getEl,
     isWindowGreaterOrEqual,
@@ -26131,7 +26131,7 @@ import {
 import { 
     SITE_DIRECTIONS,
     BREAKPOINTS
-} from "../constants";
+} from "../constants";*/
 
 export default class Preloader {
     constructor(siteState) {
