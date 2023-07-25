@@ -39,53 +39,7 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-
-  /* Comienza la sección de los idiomas */
-
-  .lang{
-    background: none; 
-    border: none;
-    cursor: pointer;
-  }
-  #esTranslator{
-    display: none;
-  }
-  #esTranslator_mobile,#enTranslator_mobile{
-    display: none;
-  }
-  .es{
-    max-height: 27px;
-  }
-  .lang img{
-    height: 30px;
-    filter: drop-shadow(0px 0px 1px #FFF);
-  }
-
-  @media (max-width:480px) {
-    #esTranslator,#enTranslator{
-      display: none;
-    }
-    #enTranslator_mobile{
-      margin-left: 100%;
-    }
-    #esTranslator_mobile{
-      margin-left: 35%;
-    }
-    .lang img{
-      height: 40px;
-    }
-    .es{
-      max-height: 34px !important;
-    }
-    #esTranslator_mobile{
-      display: none;
-    }
-    
-    #enTranslator_mobile{
-      display: inline;
-    }
-  }
-  /* Termina la sección de los idiomas */
+  
   img {
     vertical-align: middle;
   }

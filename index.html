@@ -63,11 +63,80 @@
     
 <script>
 
+function Translate() { 
+	//initialization
+	this.init =  function(attribute, lng){
+		this.attribute = attribute;
+		this.lng = lng;	
+	}
+	//translate 
+	this.process = function(){
+		_self = this;
+		var xrhFile = new XMLHttpRequest();
+		//load content data 
+		xrhFile.open("GET", "https://joshbv6.github.io/json/"+this.lng+".json", false);
+		xrhFile.onreadystatechange = function ()
+		{
+			if(xrhFile.readyState === 4)
+			{
+				if(xrhFile.status === 200 || xrhFile.status == 0)
+				{
+					var LngObject = JSON.parse(xrhFile.responseText);
+					var allDom = document.getElementsByTagName("*");
+					for(var i =0; i < allDom.length; i++){
+						var elem = allDom[i];
+						var key = elem.getAttribute(_self.attribute);
+						if(key != null) {
+							elem.innerHTML = LngObject[key]  ;
+						}
+					}
+				
+				}
+			}
+		}
+		xrhFile.send();
+    }
+}
+
 function activewhats (){
     document.getElementById('whatsappsvg').classList.add("whatsappsvg");
     document.getElementById('contact-form__submit-button').addEventListener('mouseout',function(){
         document.getElementById('whatsappsvg').classList.remove("whatsappsvg");
     })
+}
+
+function change_language(lang){
+    translate(lang,'lng-tag');
+    switch(lang){
+        case 'es':
+            document.getElementById("esTranslator").style.display = "none";
+            document.getElementById("enTranslator").style.display = "inline";
+            break;
+        case 'en':
+            document.getElementById("enTranslator").style.display = "none";
+            document.getElementById("esTranslator").style.display = "inline";
+            break;
+    }
+}
+
+function change_language_mobile(lang){
+    translate(lang,'lng-tag');
+    switch(lang){
+        case 'es':
+            document.getElementById("esTranslator_mobile").style.display = "none";
+            document.getElementById("enTranslator_mobile").style.display = "inline";
+            break;
+        case 'en':
+            document.getElementById("enTranslator_mobile").style.display = "none";
+            document.getElementById("esTranslator_mobile").style.display = "inline";
+            break;
+    }
+}
+
+function translate(lng, tagAttr){
+    var translate = new Translate();
+    translate.init(tagAttr, lng);
+    translate.process();
 }
 
 function whatsappsend(){
@@ -133,7 +202,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }</style></head>
 
-<body class="page-home default-theme site--full-cover ltr">
+<body class="page-home default-theme site--full-cover ltr" id="page-top" onload="translate('es','lng-tag')">
     <!-- SITE WRAPPER -->
     <div id="site">
         <!-- SITE PRELOADER -->
@@ -159,20 +228,23 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             <!-- END SITE LOGO -->
 
             <!-- SITE NAVIGATION -->
+            <div id="site-language"><button class="lang" id="enTranslator_mobile" onclick="change_language_mobile('en')" style="transform: translateY(0px); opacity: 1;"><img src="./assets/uk.png" alt="uk" class="uk"></button></div>
+            <div id="site-language"><button class="lang" id="esTranslator_mobile" onclick="change_language_mobile('es')" style="transform: translateY(0px); opacity: 1;"><img src="./assets/es.png" alt="es" class="es"></button></div>
+            
             <nav aria-label="Site navigation" id="site-navigation" class="site-navigation">
                 <div class="site-menu-wrapper">
                     <ul id="site-menu" class="navigation navigation--site">
                         <li class="navigation__item" style="transform: translateY(0px); opacity: 1;">
-                            <a class="navigation__link" href="#about">About</a>
+                            <a class="navigation__link" href="#about" lng-tag="about"></a>
                         </li>
                         <li class="navigation__item" style="transform: translateY(0px); opacity: 1;">
-                            <a class="navigation__link" href="#experience">Experience</a>
+                            <a class="navigation__link" href="#experience" lng-tag="experience"></a>
                         </li>
                         <li class="navigation__item" style="transform: translateY(0px); opacity: 1;">
-                            <a class="navigation__link" href="#skills">Skills</a>
+                            <a class="navigation__link" href="#skills" lng-tag="skills"></a>
                         </li>
                         <li class="navigation__item" style="display: none; transform: translateY(0px); opacity: 1;">
-                            <a class="navigation__link" href="#clients">Clients</a>
+                            <a class="navigation__link" href="#clients" lng-tag="clients"></a>
                         </li>
                         <li class="navigation__item" style="display: none; transform: translateY(0px); opacity: 1;">
                             <a class="navigation__link" href="#portfolio">Portfolio</a>
@@ -181,18 +253,20 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                             <a class="navigation__link" href="#blog">Blog</a>
                         </li>
                         <li class="navigation__item" style="transform: translateY(0px); opacity: 1;">
-                            <a class="navigation__link" href="#projects">Projects</a>
+                            <a class="navigation__link" href="#projects" lng-tag="projects"></a>
                         </li>
                         <li class="navigation__item" style="transform: translateY(0px); opacity: 1;">
-                            <a class="navigation__link" href="#contact">Contact</a>
+                            <a class="navigation__link" href="#contact" lng-tag="contact"></a>
                         </li>
                     </ul>
 
                     <div class="site-navigation__theme-buttons">
+                        <button class="lang" id="enTranslator" onclick="change_language('en')"><img src="./assets/uk.png" alt="uk" class="uk"></button>
+                        <button class="lang" id="esTranslator" onclick="change_language('es')"><img src="./assets/es.png" alt="es" class="es"></button>
                         <button id="a11y-preferences-btn" type="button" class="button button--link button--icon-default button--a11y-preferences" aria-controls="a11y-preferences" aria-expanded="false" style="transform: translateY(0px); opacity: 1;">
                             <span class="material-icons" aria-hidden="true">accessibility_new</span>
-                            <span class="button__text">Accessibility</span>
-                            <span class="sr-only">Open preferences</span>
+                            <span class="button__text" lng-tag="accessibility"></span>
+                            <span class="sr-only" lng-tag="open_preferences"></span>
                         </button>
                     </div>
                 </div>
@@ -266,11 +340,11 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
         <div id="a11y-preferences" class="a11y-preferences" inert="" aria-hidden="true">
             <div id="a11y-preferences-overlay" class="a11y-preferences__overlay"></div>
             <div class="a11y-preferences__dialog" role="dialog" aria-labeledby="a11y-preferences-title">
-                <div id="a11y-preferences-title" class="heading-4">Accessibility preferences</div>
+                <div id="a11y-preferences-title" class="heading-4" lng-tag="accesibility_preferences"></div>
                 <div>
                     <div class="switch a11y-preferences__control" style="display: none;">
                         <label for="dark-theme-control" class="switch__label">
-                            <strong>Dark theme</strong>
+                            <strong lng-tag="dark_theme" class="material-icons">Dark theme</strong>
                         </label>
                         <button id="dark-theme-control" class="switch__button" role="switch" aria-checked="false" tabindex="-1">
                             <span class="switch__button-text--on">on</span>
@@ -280,7 +354,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                     </div>
                     <div class="switch a11y-preferences__control">
                         <label for="disable-anim-control" class="switch__label">
-                            <strong>Animation</strong>
+                            <strong lng-tag="animation"></strong>
                         </label>
                         <button id="disable-anim-control" class="switch__button" role="switch" aria-checked="true" tabindex="-1">
                             <span class="switch__button-text--on">on</span>
@@ -291,7 +365,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                 </div>
 
                 <footer class="a11y-preferences__footer">
-                    <button id="a11y-preferences-close-btn" class="button button--secondary" tabindex="-1">Close</button>
+                    <button id="a11y-preferences-close-btn" class="button button--secondary" tabindex="-1" lng-tag="close"></button>
                 </footer>
             </div>
         </div>
@@ -303,38 +377,34 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             <section id="banner" class="banner" tabindex="-1" style="opacity: 1;">
 
                 <div class="banner__full-cover jarallax">
-                        
-                        <!--<img class="jarallax-img carousel-slide" src="./assets/banner/street.jpg" alt="img2">
-                        <img class="jarallax-img carousel-slide" src="./assets/banner/city.jpg" alt="img3">
-                        <img class="jarallax-img carousel-slide" src="./assets/banner/red.jpg" alt="img4">
-                            Uncomment this will create a carousel of photos
-                    -->
                     <span class="banner__full-cover-overlay"></span>
                 <div id="jarallax-container-0" >
-                    <img class="jarallax-img carousel-slide active" src="./src_files/hood.jpg" alt="img1" ></div></div>
-                <div class="container-fluid">
+                    <img class="jarallax-img carousel-slide active" src="./src_files/hood.jpg" alt="img1">
+                    <!--<img class="jarallax-img carousel-slide" src="./assets/street.jpg" alt="img2">
+                    <img class="jarallax-img carousel-slide" src="./assets/city.jpg" alt="img3">
+                    <img class="jarallax-img carousel-slide" src="./assets/red.jpg" alt="img4">
+                      <!--  Uncomment this will create a carousel of photos
+                -->
+                </div></div>
+                    <div class="container-fluid">
                     <div class="banner__grid banner__grid--fullscreen">
                         <div class="banner__content">
                             <div class="banner__introductory">
-                                <div class="banner__introductory-text">Hi, my name is</div>
+                                <div class="banner__introductory-text" lng-tag="name"></div>
                                 <div class="banner__introductory-line">
                                     <span class="line line--horizontal line--banner"></span>
                                 </div>
                             </div>
 
-                            <h1 class="site-title"><strong>Josh</strong>, I'm a Software Engineer.
+                            <h1 class="site-title"><strong>Josh</strong>, <label lng-tag="position"></label>.
                             </h1>
 
                             <div class="banner__box">
-                                <p class="site-subtitle"><b style="color: #ff073a;">Welcome to my portfolio!</b><br>
-                                    I am a skilled and enthusiastic software engineer with experience in full stack web development,
-                                    including comprehensive knowledge of database management.<br>
-                                    I've had the privilege of working on a diverse range of projects that have honed my expertise
-                                    in creating responsive, user-friendly, secure and efficient web applications,
-                                    while also seamlessly connecting and managing databases.</p>
-                                    <a href="https://www.canva.com/design/DAFawwV4h3Q/VK71ZevvkWRpa1AZHQgUOw/view?utm_content=DAFawwV4h3Q&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=publishsharelink" target="_blank" id="download-button" class="banner__button button button--default"><span class="line--underline">Check my CV</span></a>
-                                    
-                                    <a href="./assets/Joshua_Banon_Resume.doc" download="Joshua_Banon_Resume.doc" id="download-button" class="banner__button button button--default"><span class="line--underline">Download</span><span class="material-icons">download</span></a>
+                                <p class="site-subtitle"><b style="color: #ff073a;" lng-tag="welcome"></b><br>
+                                    <label lng-tag="presentation"></label><br>
+                                    <label lng-tag="privilege"></label></p>
+                                    <a href="https://www.canva.com/design/DAFawwV4h3Q/VK71ZevvkWRpa1AZHQgUOw/view?utm_content=DAFawwV4h3Q&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=publishsharelink" target="_blank" id="download-button" class="banner__button button button--default"><span class="line--underline" lng-tag="CV"></span></a>
+                                    <a href="./assets/Joshua_Banon_Resume.doc" download="Joshua_Banon_Resume.doc" id="download-button" class="banner__button button button--default"><span class="line--underline" lng-tag="download"></span><span class="material-icons">download</span></a>
 
                             </div>
                         </div>
@@ -347,7 +417,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             <section id="about" class="section" tabindex="-1">
                 <div class="container">
                     <header class="section__header fade-up-start" data-gc="fade-up">
-                        <h2>About</h2>
+                        <h2 lng-tag="about"></h2>
                         <div class="line line--horizontal line--heading" aria-hidden="true"></div>
                         <p class="section__header-p"></p>
                     </header>
@@ -361,61 +431,60 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                         </div>
                         <div class="about__content">
                             <div class="fade-up-start" data-gc="fade-up">
-                                <p>I am passionate about technology<br><br> 
-                                    My journey in the digital world has led me to specialize in a diverse range of areas, 
-                                    including 
-                                    <label class="blue">databases</label>, 
-                                    <label class="blue">API's development</label>, 
-                                    <label class="blue">full-stack web development</label>, 
-                                    <label class="blue">mail server management</label>, 
-                                    <label class="blue">domain security and DNS records management</label>.
+                                <p ><label lng-tag="passion"></label><br><br> 
+                                    <label lng-tag="career"></label>
+                                    <label class="blue" lng-tag="databases"></label>, 
+                                    <label class="blue" lng-tag="API"></label>, 
+                                    <label class="blue" lng-tag="fullstack_web"></label>, 
+                                    <label class="blue" lng-tag="mail_server"></label>, 
+                                    <label class="blue" lng-tag="DNS"></label>.
                                      </p>
-                                <p>Recently started my studies in cyber security, with slight knowledge of both offensive and defensive 
-                                    (<label class="redteam">red team</label> and <label class="blueteam">blue team</label>)</p>
+                                <p><label lng-tag="security_studies"></label>
+                                    (<label class="redteam">red team</label> - <label class="blueteam">blue team</label>)</p>
                             </div>
                             <br>
                             <div class="fade-up-start" data-gc="fade-up">
-                                <h3>My skills in list</h3>
+                                <h3 lng-tag="skill_list"></h3>
                             </div>
                             <div class="about__content-list-grid fade-up-start" data-gc="fade-up">
                                 <ul class="dash-list">
 
                                     <li class="dash-list__item">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
-                                        Full Stack Web Development
+                                        <label lng-tag="web_fullstack"></label>
                                     </li>
 
                                     <li class="dash-list__item">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
-                                        Database Server Management
+                                        <label lng-tag="db_manage"></label>
                                     </li>
 
                                     <li class="dash-list__item">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
-                                        Responsive Web Design
+                                        <label lng-tag="web_responsive"></label>
                                     </li>
                                 </ul>
                                 <ul class="dash-list">
 
                                     <li class="dash-list__item">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
-                                        Security and Efficiency
+                                        <label lng-tag="security_eficiency"></label>
                                     </li>
 
                                     <li class="dash-list__item">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
-                                        Domain and Server Management
+                                        <label lng-tag="domain_manage"></label>
                                     </li>
 
                                     <li class="dash-list__item">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
-                                        Version Control
+                                        <label lng-tag="control_version"></label>
                                     </li>
                                 </ul>
                             </div>
                             <br><br><br>
                             <div class="fade-up-start bars" data-gc="fade-up">
-                                <h3>My skills in bars</h3>
+                                <h3 lng-tag="skill_bar"></h3>
                                 <ul class="list-reset">
                                     <li class="skill-bar">
                                         <div class="skill-bar__title">
@@ -492,7 +561,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             <section id="experience" class="section" tabindex="-1">
                 <div class="container">
                     <header class="section__header fade-up-start" data-gc="fade-up">
-                        <h2>Experience</h2>
+                        <h2 lng-tag="experience"></h2>
                         <div class="line line--horizontal line--heading" aria-hidden="true"></div>
                         <p class="section__header-p"></p>
                     </header>
@@ -501,7 +570,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                         <div class="fade-up-start" data-gc="fade-up">
                             <div class="timeline">
                                 <span class="timeline__vertical-line"></span>
-                                <h3 class="timeline__title">Education</h3>
+                                <h3 class="timeline__title" lng-tag="education"></h3>
                                 <div class="timeline__item">
                                     <h4>CS50X Introduction to Computer Science</h4>
                                     <span class="timeline__item-bullet"></span>
@@ -512,7 +581,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     </span>
                                     <span class="heading-5">Harvard University (edX)</span>
                                     <p class="timeline__item-p"></p>
-                                    <p class="bold">Developed skills</p>
+                                    <p class="bold" lng-tag="developed_skill"></p>
                                     <ul class="dash-list">
                                         <li class="dash-list__item dash-list__item--inline">
                                             <span class="dash-list__dash" aria-hidden="true"></span>
@@ -543,7 +612,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                             Flask
                                         </li>
                                     </ul><br>
-                                    <p class="bold">Course&nbsp;⇒&nbsp;<a href="https://pll.harvard.edu/course/cs50-introduction-computer-science" target="_blank" class="link">here</a></p>
+                                    <p class="bold"><label lng-tag="course"></label>&nbsp;⇒&nbsp;<a href="https://pll.harvard.edu/course/cs50-introduction-computer-science" target="_blank" class="link" lng-tag="here"></a></p>
                                 </div>
                                 <div class="timeline__item">
                                     <h4>Full Stack Web Master</h4>
@@ -555,7 +624,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     </span>
                                     <span class="heading-5">Udemy</span>
                                     <p class="timeline__item-p"></p>
-                                    <p class="bold">Developed skills</p>
+                                    <p class="bold" lng-tag="developed_skill"></p>
                                     <ul class="dash-list">
                                         <li class="dash-list__item dash-list__item--inline">
                                             <span class="dash-list__dash" aria-hidden="true"></span>
@@ -598,7 +667,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                             JWT
                                         </li>
                                     </ul><br>
-                                    <p class="bold">Course&nbsp;⇒&nbsp;<a href="https://www.udemy.com/course/master-en-desarrollo-web-full-stack-angular-node-laravel-symfony/" target="_blank" class="link">here</a></p>
+                                    <p class="bold"><label lng-tag="course"></label>&nbsp;⇒&nbsp;<a href="https://www.udemy.com/course/master-en-desarrollo-web-full-stack-angular-node-laravel-symfony/" target="_blank" class="link" lng-tag="here"></a></p>
                                 </div>
                                 <span class="timeline__start-point"></span>
                             </div>
@@ -607,9 +676,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                         <div class="fade-up-start" data-gc="fade-up">
                             <div class="timeline">
                                 <span class="timeline__vertical-line"></span>
-                                <h3 class="timeline__title">Professional</h3>
+                                <h3 class="timeline__title" lng-tag="professional"></h3>
                                 <div class="timeline__item">
-                                    <h4>Full Stack Developer</h4>
+                                    <h4 lng-tag="fullstack_developer"></h4>
                                     <span class="timeline__item-bullet"></span>
                                     <span class="timeline__item-date">
                                         <span class="heading-5">Sept. 2022</span>
@@ -618,15 +687,14 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     </span>
                                     <span class="heading-5">Idealista (Inmovilla)</span>
                                     <p class="timeline__item-p">
-                                        ●Developed and maintained client websites (HTML, CSS, JavaScript, PHP, and SQL)
-                                        <br><br>●Designed and implemented responsive web pages
-                                        <br><br>●Improved website performance by optimizing images and code
-                                        <br><br>●Collaborated with designers and project managers to ensure projects met client expectations
-                                        <br><br>●Created and updated documentation
-                                        <br><br>●Troubleshot and resolved website issues using debugging tools and techniques
-                                        <br><br>●Assisted in the development of a web-based application using RESTful APIs
-                                        <br><br>●Successfully launched and maintained more than 3.000 websites for clients</p>
-                                        <p class="bold">Developed skills</p>
+                                        ●<span lng-tag="idealista_1"></span>(HTML, CSS, JavaScript, PHP, and SQL).
+                                        <br><br>●<span lng-tag="idealista_2"></span>
+                                        <br><br>●<span lng-tag="idealista_3"></span>
+                                        <br><br>●<span lng-tag="idealista_4"></span>
+                                        <br><br>●<span lng-tag="idealista_5"></span>
+                                        <br><br>●<span lng-tag="idealista_6"></span>
+                                    </p>
+                                        <p class="bold" lng-tag="developed_skill"></p>
                                         <ul class="dash-list">
                                         <li class="dash-list__item dash-list__item--inline">
                                             <span class="dash-list__dash" aria-hidden="true"></span>
@@ -708,7 +776,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                 <section id="skills"></section>
                 <div class="container">
                     <header class="section__header fade-up-start" data-gc="fade-up">
-                        <h2>Skills</h2>
+                        <h2 lng-tag="skills"></h2>
                         <div class="line line--horizontal line--heading" aria-hidden="true"></div>
                         <p class="section__header-p"></p>
                     </header>
@@ -719,9 +787,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <span class="material-icons" aria-hidden="true">output</span>
                                 </div>
                                 <div class="line line--horizontal line--service"></div>
-                                <h3>Back-End Development</h3>
+                                <h3 lng-tag="backend"></h3>
                                 <p class="service__p">
-                                    </p><p class="bold">Languages:</p>
+                                    </p><p class="bold" lng-tag="languages"></p>
                                     <ul class="dash-list">
                                     <li class="dash-list__item dash-list__item--inline">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
@@ -776,9 +844,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <span class="material-icons" aria-hidden="true">code</span>
                                 </div>
                                 <div class="line line--horizontal line--service"></div>
-                                <h3>Front-End Development</h3>
+                                <h3 lng-tag="frontend"></h3>
                                 <p class="service__p">
-                                    </p><p class="bold">Languages:</p>
+                                    </p><p class="bold" lng-tag="languages"></p>
                                     <ul class="dash-list">
                                     <li class="dash-list__item dash-list__item--inline">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
@@ -821,9 +889,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <span class="material-icons" aria-hidden="true">dataset</span>
                                 </div>
                                 <div class="line line--horizontal line--service"></div>
-                                <h3>Data / Database</h3>
+                                <h3 lng-tag="db"></h3>
                                 <p class="service__p">
-                                    </p><p class="bold">System:</p>
+                                    </p><p class="bold" lng-tag="system"></p>
                                     <ul class="dash-list">
                                     <li class="dash-list__item dash-list__item--inline">
                                         <span class="dash-list__dash" aria-hidden="true"></span>
@@ -870,7 +938,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <span class="material-icons" aria-hidden="true">language</span>
                                 </div>
                                 <div class="line line--horizontal line--service"></div>
-                                <h3>Websites</h3>
+                                <h3 lng-tag="website"></h3>
                                 <p class="service__p">
                                     </p><ul class="dash-list">
                                     <li class="dash-list__item dash-list__item--inline">
@@ -919,7 +987,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <span class="material-icons" aria-hidden="true">security</span>
                                 </div>
                                 <div class="line line--horizontal line--service"></div>
-                                <h3>CyberSecurity</h3>
+                                <h3 lng-tag="cybersecurity"></h3>
                                 <p class="service__p">
                                     </p><ul class="dash-list">
                                     <li class="dash-list__item dash-list__item--inline">
@@ -951,7 +1019,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <span class="material-icons" aria-hidden="true">timeline</span>
                                 </div>
                                 <div class="line line--horizontal line--service"></div>
-                                <h3>Control Version</h3>
+                                <h3 lng-tag="control_version"></h3>
                                 <p class="service__p">
 
                                     </p><ul class="dash-list">
@@ -1366,9 +1434,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                     <header class="section__header fade-up-start" data-gc="fade-up">
                         <h2>Blog</h2>
                         <div class="line line--horizontal line--heading" aria-hidden="true"></div>
-                        <p class="section__header-p">Blog in progress... at <a class="red" href="https://joshbv6.github.io/BreachForce/" target="_blank">BreachForce</a></p>
+                        <p class="section__header-p">Blog <span lng-tag="in_progress"></span> <a class="red" href="https://joshbv6.github.io/BreachForce/" target="_blank">BreachForce</a></p>
                         <br>
-                        <p class="section__header-p">Sorry for the inconvenience.</p>
+                        <p class="section__header-p" lng-tag="inconvenience"></p>
                     </header>
                     <div class="blog__grid" style="display: none;">
 
@@ -1467,10 +1535,10 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             <section id="projects" class="section" tabindex="-1">
                 <div class="container">
                     <header class="section__header fade-up-start" data-gc="fade-up">
-                        <h2>Projects</h2>
+                        <h2 lng-tag="projects"></h2>
                         <div class="line line--horizontal line--heading" aria-hidden="true"></div>
-                        <p class="bold">Check all of my projects at <a class="red" href="https://joshbv6.github.io/Portfolio/" target="_blank">Projects</a>.</p>
-                        <br><p class="bold">I'm still expanding list of my projects and upgrading/refactoring the deployed ones. <br>Here are some of them:</p>
+                        <p class="bold"><span lng-tag="project_view"></span><a class="red" href="https://joshbv6.github.io/Portfolio/" target="_blank"><span lng-tag="projects"></span></a>.</p>
+                        <br><p class="bold"><span lng-tag="project_all"></span><br><span lng-tag="projects_few"></span></p>
 
                     </header>
                     <div class="blog__grid">
@@ -1489,9 +1557,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                 </header>
                                 <div class="blog-post__content">
                                     <p>
-                                    This website is designed for those nights when you and your friends don't know what to drink.
+                                    <span lng-tag="project_1_1"></span>
                                     <br>
-                                    The web will randomly generate a cocktail and will show you both the instructions to prepare it and the list of ingredients, as well as a photo of the cocktail.</p>
+                                    <span lng-tag="project_1_2"></span></p>
                                 </div>
                             </div>
                             <footer class="blog-post__footer">
@@ -1515,9 +1583,9 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                 </header>
                                 <div class="blog-post__content">
                                     <p>
-                                    This website is a parody of the board game "Cards Against Humanity".
+                                    <span lng-tag="project_2_1"></span> "Cards Against Humanity".
                                     <br>
-                                    It is designed to be played with your friends in the same house. Inside the website there is a guide on how to play the game.
+                                    <span lng-tag="project_2_2"></span>
                                     </p>
                                 </div>
                             </div>
@@ -1536,7 +1604,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
             <section id="contact" class="section" tabindex="-1">
                 <div class="container">
                     <header class="section__header fade-up-start" data-gc="fade-up">
-                        <h2>Contact</h2>
+                        <h2 lng-tag="contact"></h2>
                         <div class="line line--horizontal line--heading" aria-hidden="true"></div>
                         <p class="section__header-p"></p>
                     </header>
@@ -1563,10 +1631,10 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                             </div>
                             <div>
                                 <div class="form-group whatsappno">
-                                    <textarea class="form-control form__field" rows="3" style="resize: none;" id="whatstext">Hi! I'd like to contact!</textarea>
+                                    <textarea class="form-control form__field" rows="3" style="resize: none;" id="whatstext" lng-tag="want_contact"></textarea>
                                 </div>
-                                <button type="submit" id="contact-form__submit-button" class="button button--default whatsapp whatsbutton">
-                                        <span class="button__text" onmouseover="activewhats()" onclick="whatsappsend()">Send Whatsapp&nbsp;&nbsp;
+                                <button type="submit" id="contact-form__submit-button" class="button button--default whatsapp whatsbutton" onmouseover="activewhats()" onclick="whatsappsend()">
+                                        <span class="button__text">Whatsapp&nbsp;&nbsp;
 
                                             <svg fill="#000" id="whatsappsvg" height="25px" width="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 308 308" xml:space="preserve">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -1586,11 +1654,11 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     <div id="form-live-region" class="form__message" role="alert" aria-atomic="true" data-error-instruction="There were some issues with the form submission"></div>
                                 </div>
                                 <div class="form-group">
-                                    <p>All fields are required.</p>
+                                    <p lng-tag="required"></p>
                                 </div>
                                 <div class="form-contact__two-columns">
                                     <div class="form-group">
-                                        <label class="form__label" for="form-name">Name</label>
+                                        <label class="form__label" for="form-name" lng-tag="name_mail"></label>
                                         <input class="form-control form__field" type="text" id="form-name" name="name" data-error-message="Name is a require field." aria-required="true">
                                         <span class="material-icons form__field-icon" aria-hidden="true">error</span>
                                     </div>
@@ -1601,18 +1669,18 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form__label" for="form-message">Subject</label>
+                                    <label class="form__label" for="form-message" lng-tag="subject_mail"></label>
                                     <textarea class="form-control form__field" id="form-message" rows="1" name="subject" data-error-message="Subject is a require field." aria-required="true"></textarea>
                                     <span class="material-icons form__field-icon" aria-hidden="true">error</span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form__label" for="form-message">Message</label>
+                                    <label class="form__label" for="form-message" lng-tag="message_mail"></label>
                                     <textarea class="form-control form__field" id="form-message" rows="5" name="message" data-error-message="Message is a require field." aria-required="true"></textarea>
                                     <span class="material-icons form__field-icon" aria-hidden="true">error</span>
                                 </div>
                                 <div class="form-group form__button-wrapper">
                                     <button type="submit" id="contact-form__submit-button" class="button button--default">
-                                        <span class="button__text line--underline">Submit</span>
+                                        <span class="button__text line--underline" lng-tag="submit_email"></span>
                                         <span class="button__spinner spinner-dual-ring">
                                             <span></span>
                                         </span>
@@ -2023,7 +2091,7 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
         <!-- SITE FOOTER -->
         <footer id="site-footer" class="site-footer">
             <div class="container site-footer__inner fade-up-start" data-gc="fade-up" style="opacity: 1;">
-                <a href="http://localhost:8080/#banner" id="go-to-top-btn" class="button button--secondary site-footer__button">Go to top</a>
+                <a href="http://localhost:8080/#banner" id="go-to-top-btn" class="button button--secondary site-footer__button" lng-tag="to_top"></a>
             </div>
             <div class="site-social-links site-social-links--footer">
                 <!-- Uncomment for Facebook link -->

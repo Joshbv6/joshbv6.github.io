@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Robotronica';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Robotronica'), url('https://fonts.cdnfonts.com/s/39107/Robotronica-v4AO.woff') format('woff');
+}
+@font-face {
+    font-family: 'Robotronica';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Robotronica'), url('https://fonts.cdnfonts.com/s/39107/Robotronica-zWl1.woff') format('woff');
+}
+@font-face {
+    font-family: 'Robotronica';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Robotronica'), url('https://fonts.cdnfonts.com/s/39107/RobotronicaItalic-2mEK.woff') format('woff');
+}
+@font-face {
+    font-family: 'Robotronica';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Robotronica'), url('https://fonts.cdnfonts.com/s/39107/RobotronicaItalic-5d9z.woff') format('woff');
+}
+
+

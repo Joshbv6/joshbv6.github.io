@@ -3414,7 +3414,7 @@ var Preloader = /*#__PURE__*/function () {
       if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_1__.isWindowGreaterOrEqual)(_constants__WEBPACK_IMPORTED_MODULE_2__.BREAKPOINTS.lg)) {
         var offset = animationOff ? 0 : '-=750';
         siteLoadingTimeline.add(preLoaderAnimation).add(siteBrandAnimation).add({
-          targets: '#site-navigation-toggler,#site-language',
+          targets: '#site-navigation-toggler',
           translateY: animationOff ? 0 : [-20, 0],
           opacity: opacity0to1
         }, offset).add(bannerContentAnimation, offset);
