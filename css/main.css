@@ -1653,7 +1653,7 @@ textarea.form__field {
 @media (min-width: 1200px) {
   .about__img {
     margin-right: 8.9375rem;
-    width: 50%;
+    width: 60%;
   }
 }
 @media (max-width: 770px) {

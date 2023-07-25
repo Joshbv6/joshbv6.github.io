@@ -3424,7 +3424,7 @@ var Preloader = /*#__PURE__*/function () {
         var _offset = animationOff ? 0 : '-=750';
 
         siteLoadingTimeline.add(preLoaderAnimation).add(siteBrandAnimation).add({
-          targets: '.site-navigation .navigation__item, .button--a11y-preferences',
+          targets: '.site-navigation .navigation__item,#esTranslator,#enTranslator ,.button--a11y-preferences',
           translateY: animationOff ? 0 : [-20, 0],
           opacity: opacity0to1,
           delay: animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_0__["default"].stagger(stagger)
