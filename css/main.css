@@ -3691,6 +3691,10 @@ body.dark-theme .bg--background, body.default-theme .bg--background {
   background-color: #ff073a;
 }
 
+.small{
+  font-size: 13.5px;
+}
+
 .timeline__vertical-line {
   background-color: #ff073a;
 }
