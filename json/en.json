@@ -29,6 +29,8 @@
     "web_fullstack": "Full Stack Web Development",
     "db_manage": "Database Server Management",
     "web_responsive": "Responsive Web Design",
+    "linux":"Linux",
+    "window":"windows",
     "security_eficiency": "Security and Efficiency",
     "domain_manage": "Domain and Server Management",
     "control_version": "Version Control",
