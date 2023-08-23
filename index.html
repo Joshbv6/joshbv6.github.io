@@ -68,6 +68,10 @@ function Translate() {
 	this.init =  function(attribute, lng){
 		this.attribute = attribute;
 		this.lng = lng;	
+        var resume = document.querySelectorAll("[id='download-button']");
+ 
+        for(var i = 0; i < resume.length; i++) 
+            resume[i].href='/docs/'+lng+".pdf";
 	}
 	//translate 
 	this.process = function(){
@@ -403,8 +407,8 @@ src="https://www.facebook.com/tr?id=479363322482563&ev=PageView&noscript=1"
                                 <p class="site-subtitle"><b style="color: #ff073a;" lng-tag="welcome"></b><br>
                                     <label lng-tag="presentation"></label><br>
                                     <label lng-tag="privilege"></label></p>
-                                    <a href="https://www.canva.com/design/DAFawwV4h3Q/VK71ZevvkWRpa1AZHQgUOw/view?utm_content=DAFawwV4h3Q&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=publishsharelink" target="_blank" id="download-button" class="banner__button button button--default"><span class="line--underline" lng-tag="CV"></span></a>
-                                    <a href="./assets/Joshua_Banon_Resume.doc" download="Joshua_Banon_Resume.doc" id="download-button" class="banner__button button button--default"><span class="line--underline" lng-tag="download"></span><span class="material-icons">download</span></a>
+                                    <a href="" target="_blank" id="download-button" class="banner__button button button--default"><span class="line--underline" lng-tag="CV"></span></a>
+                                    <a href="" download="Joshua_Banon.pdf" id="download-button" class="banner__button button button--default"><span class="line--underline" lng-tag="download"></span><span class="material-icons">download</span></a>
 
                             </div>
                         </div>
