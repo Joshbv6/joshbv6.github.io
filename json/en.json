@@ -83,5 +83,12 @@
     "subject_mail": "Subject",
     "message_mail": "Message",
     "submit_email": "Submit",
-    "to_top": "Go to top"
+    "to_top": "Go to top",
+    "now": "Now",
+    "best_practices": "Best Practices",
+    "algorithmic_tinking": "Algorithmic Thinking",
+    "procedural_programming":"Procedural Programming",
+    "POO": "Object-Oriented Programming (OOP)",
+    "multi_module":"Design, Develop, and Debug Multi-Module applications",
+    "solutions_arch":"Solutions Architecture"
   }

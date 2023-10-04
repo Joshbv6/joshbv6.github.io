@@ -83,5 +83,12 @@
     "subject_mail":"Asunto",
     "message_mail":"Mensaje",
     "submit_email":"Enviar",
-    "to_top":"Ir arriba"
+    "to_top":"Ir arriba",
+    "now": "Actualidad",
+    "best_practices": "Buenas Prácticas",
+    "algorithmic_tinking": "Pensamiento Algorítmico",
+    "procedural_programming": "Programación Procedimental",
+    "POO": "Programación Orientada a Objetos (POO)",
+    "multi_module":"Diseño, Desarrollo y Depuración de Aplicaciones Modulares",
+    "solutions_arch":"Arquitectura de Soluciones"
 }
