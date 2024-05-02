@@ -136,6 +136,7 @@
       metaOLD.forEach((element) => element.remove());
       var meta = document.createElement('meta');
       meta.setAttribute('property', 'og:image');
+      meta.setAttribute('itemprop', 'image');
       meta.content = "https://joshbv6.github.io/"+src;
       document.getElementsByTagName('head')[0].appendChild(meta);
     }
