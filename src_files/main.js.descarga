@@ -2517,6 +2517,7 @@ var A11yPreferencs = /*#__PURE__*/function () {
     this.a11yPreferencesEl = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#a11y-preferences');
     this.a11yPreferencesBtn = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#a11y-preferences-btn');
     this.darkThemeControlEl = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#dark-theme-control');
+    this.darkThemeControlElMobile = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#dark-theme-control_mobile');
     this.animControlEl = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#disable-anim-control');
     this.lastPageActiveEl = "";
     this.init();
@@ -2579,6 +2580,7 @@ var A11yPreferencs = /*#__PURE__*/function () {
       (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#skip-to-a11y-preferences').addEventListener('click', this.openA11yPreferences.bind(this));
       (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getEl)('#a11y-preferences-overlay').addEventListener('click', this.closeA11yPreferences.bind(this));
       this.darkThemeControlEl.addEventListener('click', this.toggleSiteTheme.bind(this));
+      this.darkThemeControlElMobile.addEventListener('click', this.toggleSiteTheme.bind(this));
       this.animControlEl.addEventListener('click', this.toggleAnimation.bind(this));
 
       if ((0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getPrefersColorScheme)().addEventListener) {
@@ -2642,8 +2644,10 @@ var A11yPreferencs = /*#__PURE__*/function () {
     key: "toggleSiteTheme",
     value: function toggleSiteTheme() {
       if ((0,_helpers__WEBPACK_IMPORTED_MODULE_1__.isDarkThemeActive)()) {
+        setTheme('white');
         this.siteState.emitSiteTheme('default');
       } else {
+        setTheme('dark');
         this.siteState.emitSiteTheme('dark');
       }
     }
@@ -3414,7 +3418,7 @@ var Preloader = /*#__PURE__*/function () {
       if (!(0,_helpers__WEBPACK_IMPORTED_MODULE_1__.isWindowGreaterOrEqual)(_constants__WEBPACK_IMPORTED_MODULE_2__.BREAKPOINTS.lg)) {
         var offset = animationOff ? 0 : '-=750';
         siteLoadingTimeline.add(preLoaderAnimation).add(siteBrandAnimation).add({
-          targets: '#site-navigation-toggler,#site-language',
+          targets: '#site-navigation-toggler,#site-language,.dark_mode_mobile',
           translateY: animationOff ? 0 : [-20, 0],
           opacity: opacity0to1
         }, offset).add(bannerContentAnimation, offset);

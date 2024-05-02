@@ -90,5 +90,6 @@
     "procedural_programming": "Programación Procedimental",
     "POO": "Programación Orientada a Objetos (POO)",
     "multi_module":"Diseño, Desarrollo y Depuración de Aplicaciones Modulares",
-    "solutions_arch":"Arquitectura de Soluciones"
+    "solutions_arch":"Arquitectura de Soluciones",
+    "dark": "Modo oscuro"
 }

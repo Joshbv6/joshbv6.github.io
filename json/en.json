@@ -90,5 +90,6 @@
     "procedural_programming":"Procedural Programming",
     "POO": "Object-Oriented Programming (OOP)",
     "multi_module":"Design, Develop, and Debug Multi-Module applications",
-    "solutions_arch":"Solutions Architecture"
+    "solutions_arch":"Solutions Architecture",
+    "dark": "Dark Mode"
   }

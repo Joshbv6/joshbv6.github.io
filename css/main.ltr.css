@@ -50,8 +50,8 @@
   #esTranslator{
     display: none;
   }
-  #esTranslator_mobile,#enTranslator_mobile{
-    display: none;
+  #esTranslator_mobile,#enTranslator_mobile, .dark_mode_mobile{
+    display: none !important;
   }
   .es{
     max-height: 27px;
@@ -62,14 +62,14 @@
   }
 
   @media (max-width:480px) {
-    #esTranslator,#enTranslator{
-      display: none;
+    #esTranslator,#enTranslator, .dark-mode{
+      display: none !important;
     }
     #enTranslator_mobile{
-      margin-left: 100%;
+      margin-left: 55%;
     }
     #esTranslator_mobile{
-      margin-left: 34%;
+      margin-left: 30%;
     }
     .lang img{
       height: 40px;
@@ -78,11 +78,19 @@
       max-height: 34px !important;
     }
     #esTranslator_mobile{
-      display: none;
+      display: none !important;
     }
     
     #enTranslator_mobile{
-      display: inline;
+      display: inline !important;
+    }
+    .dark_mode_mobile{
+      width: 13% !important;
+      display: inline !important;
+    }
+    .switch__button[role=switch][aria-checked=true] .switch__button-theme{
+      -webkit-transform: translateX(1.3rem) !important;
+              transform: translateX(1.3rem) !important;
     }
   }
   /* Termina la sección de los idiomas */

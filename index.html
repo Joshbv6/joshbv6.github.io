@@ -119,6 +119,22 @@
       })
     }
 
+    function setTheme(theme){
+      button = 'swith_theme_button';
+      if (window.screen.width <= 480) {
+        button = 'swith_theme_button_mobile';
+      }
+      if (theme === 'dark') {
+        document.getElementById(button).innerHTML = '&#9728;';
+        document.getElementById('theme_css').href = './css/main_dark.css';
+        document.getElementById('banner_img').src = './src_files/hood.jpg';
+      } else {
+        document.getElementById(button).innerHTML = '&#9790;';
+        document.getElementById('theme_css').href = './css/main.css';
+        document.getElementById('banner_img').src = './src_files/whitebg.jpg';
+      }
+    }
+
     function change_language(lang) {
       translate(lang, 'lng-tag');
       switch (lang) {
@@ -137,12 +153,12 @@
       translate(lang, 'lng-tag');
       switch (lang) {
         case 'es':
-          document.getElementById("esTranslator_mobile").style.display = "none";
-          document.getElementById("enTranslator_mobile").style.display = "inline";
+          document.getElementById("esTranslator_mobile").style = "display: none !important";
+          document.getElementById("enTranslator_mobile").style = "display: inline !important";
           break;
         case 'en':
-          document.getElementById("enTranslator_mobile").style.display = "none";
-          document.getElementById("esTranslator_mobile").style.display = "inline";
+          document.getElementById("enTranslator_mobile").style = "display: none !important";
+          document.getElementById("esTranslator_mobile").style = "display: inline !important";
           break;
       }
     }
@@ -210,7 +226,7 @@
   <!-- DO NOT MODIFY -->
   <!-- End Facebook Pixel Code -->
   <script defer="" src="./src_files/main.js.descarga"></script>
-  <link href="./css/main.css" rel="stylesheet">
+  <link id='theme_css' href="./css/main.css" rel="stylesheet">
   <style id="inert-style">
     [inert] {
       pointer-events: none;
@@ -264,11 +280,23 @@
       <!-- END SITE LOGO -->
 
       <!-- SITE NAVIGATION -->
-      <div id="site-language"><button class="lang" id="enTranslator_mobile" onclick="change_language_mobile('en')"
-          style="transform: translateY(0px); opacity: 1;"><img src="./assets/uk.png" alt="uk" class="uk"></button></div>
-      <div id="site-language"><button class="lang" id="esTranslator_mobile" onclick="change_language_mobile('es')"
-          style="transform: translateY(0px); opacity: 1;"><img src="./assets/es.png" alt="es" class="es"></button></div>
-
+      <div id="site-language">
+        <button class="lang" id="enTranslator_mobile" onclick="change_language_mobile('en')"
+          style="transform: translateY(0px); opacity: 1;">
+          <img src="./assets/uk.png" alt="uk" class="uk">
+        </button>
+      </div>
+      <div id="site-language">
+        <button class="lang" id="esTranslator_mobile" onclick="change_language_mobile('es')"
+          style="transform: translateY(0px); opacity: 1;">
+          <img src="./assets/es.png" alt="es" class="es">
+        </button>
+      </div>
+      <button id="dark-theme-control_mobile" class="switch__button navigation__item dark_mode_mobile" role="switch" aria-checked="false">
+        <span class="switch__button-text--on sun"></span>
+        <span class="switch__button-text--off"></span>
+        <span class="switch__button-theme" id="swith_theme_button_mobile">&#9790;</span>
+      </button>
       <nav aria-label="Site navigation" id="site-navigation" class="site-navigation">
         <div class="site-menu-wrapper">
           <ul id="site-menu" class="navigation navigation--site">
@@ -303,10 +331,15 @@
                 class="uk"></button>
             <button class="lang" id="esTranslator" onclick="change_language('es')"><img src="./assets/es.png" alt="es"
                 class="es"></button>
+              <button id="dark-theme-control" class="switch__button navigation__item dark-mode" role="switch" aria-checked="false">
+                <span class="switch__button-text--on sun"></span>
+                <span class="switch__button-text--off"></span>
+                <span class="switch__button-theme" id="swith_theme_button">&#9790;</span>
+              </button>
             <button id="a11y-preferences-btn" type="button"
               class="button button--link button--icon-default button--a11y-preferences" aria-controls="a11y-preferences"
               aria-expanded="false" style="transform: translateY(0px); opacity: 1;">
-              <span class="material-icons" aria-hidden="true">accessibility_new</span>
+              <span class="material-icons access" aria-hidden="true">accessibility_new</span>
               <span class="button__text" lng-tag="accessibility"></span>
               <span class="sr-only" lng-tag="open_preferences"></span>
             </button>
@@ -451,16 +484,6 @@
       <div class="a11y-preferences__dialog" role="dialog" aria-labeledby="a11y-preferences-title">
         <div id="a11y-preferences-title" class="heading-4" lng-tag="accesibility_preferences"></div>
         <div>
-          <div class="switch a11y-preferences__control" style="display: none;">
-            <label for="dark-theme-control" class="switch__label">
-              <strong lng-tag="dark_theme" class="material-icons">Dark theme</strong>
-            </label>
-            <button id="dark-theme-control" class="switch__button" role="switch" aria-checked="false" tabindex="-1">
-              <span class="switch__button-text--on">on</span>
-              <span class="switch__button-text--off">off</span>
-              <span class="switch__button-key"></span>
-            </button>
-          </div>
           <div class="switch a11y-preferences__control">
             <label for="disable-anim-control" class="switch__label">
               <strong lng-tag="animation"></strong>
@@ -472,7 +495,6 @@
             </button>
           </div>
         </div>
-
         <footer class="a11y-preferences__footer">
           <button id="a11y-preferences-close-btn" class="button button--secondary" tabindex="-1"
             lng-tag="close"></button>
@@ -489,7 +511,7 @@
         <div class="banner__full-cover jarallax">
           <span class="banner__full-cover-overlay"></span>
           <div id="jarallax-container-0">
-            <img class="jarallax-img carousel-slide active" src="./src_files/hood.jpg" alt="img1">
+            <img class="jarallax-img carousel-slide active" id ="banner_img" src="./src_files/whitebg.jpg" alt="img1">
             <!--<img class="jarallax-img carousel-slide" src="./assets/street.jpg" alt="img2">
                     <img class="jarallax-img carousel-slide" src="./assets/city.jpg" alt="img3">
                     <img class="jarallax-img carousel-slide" src="./assets/red.jpg" alt="img4">
@@ -511,7 +533,7 @@
               </h1>
 
               <div class="banner__box">
-                <p class="site-subtitle"><b style="color: #ff073a;" lng-tag="welcome"></b><br>
+                <p class="site-subtitle welcome"><b lng-tag="welcome"></b><br>
                   <label lng-tag="presentation"></label><br>
                   <label lng-tag="privilege"></label>
                 </p>
