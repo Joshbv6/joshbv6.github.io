@@ -60,6 +60,10 @@
     height: 30px;
     filter: drop-shadow(0px 0px 1px #FFF);
   }
+  #portrait {
+    opacity: 0.98;
+    background-color: #0070AD;
+  }
 
   @media (max-width:480px) {
     #esTranslator,#enTranslator, .dark-mode{
@@ -91,6 +95,9 @@
     .switch__button[role=switch][aria-checked=true] .switch__button-theme{
       -webkit-transform: translateX(1.3rem) !important;
               transform: translateX(1.3rem) !important;
+    }
+    .switch__button-theme {
+      width: 1.35rem !important;
     }
   }
   /* Termina la sección de los idiomas */

@@ -128,10 +128,14 @@
         document.getElementById(button).innerHTML = '&#9728;';
         document.getElementById('theme_css').href = './css/main_dark.css';
         document.getElementById('banner_img').src = './src_files/hood.jpg';
+        document.getElementById('portrait').src = './assets/portrait1.png';
+        document.getElementById('portrait').style = 'opacity: 0.7;';
       } else {
         document.getElementById(button).innerHTML = '&#9790;';
         document.getElementById('theme_css').href = './css/main.css';
         document.getElementById('banner_img').src = './src_files/whitebg.jpg';
+        document.getElementById('portrait').src = './assets/portrait1-removebgd.png';
+        document.getElementById('portrait').style = 'opacity: 0.98;';
       }
     }
 
@@ -563,8 +567,8 @@
               <div class="position-relative fade-up-start" data-gc="fade-up">
                 <div class="about__img-bg"></div>
                 <div class="line line--horizontal line--about-me"></div>
-                <img loading="lazy" class="img-fluid about__img lazyload" data-src="./assets/portrait1.png" alt=""
-                  src="./src_files/portrait1.png" style="opacity: 0.7;">
+                <img loading="lazy" class="img-fluid about__img lazyload" id='portrait' data-src="./assets/portrait1-removebg.png" alt=""
+                  src="./assets/portrait1-removebg.png">
               </div>
             </div>
             <div class="about__content">
