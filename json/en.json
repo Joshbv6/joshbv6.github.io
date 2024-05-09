@@ -91,5 +91,7 @@
     "POO": "Object-Oriented Programming (OOP)",
     "multi_module":"Design, Develop, and Debug Multi-Module applications",
     "solutions_arch":"Solutions Architecture",
-    "dark": "Dark Mode"
+    "dark": "Dark Mode",
+    "mcontainer": "Multi-container Apps",
+    "environmentDocker": "Environment variables and network"
   }

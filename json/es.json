@@ -91,5 +91,7 @@
     "POO": "Programación Orientada a Objetos (POO)",
     "multi_module":"Diseño, Desarrollo y Depuración de Aplicaciones Modulares",
     "solutions_arch":"Arquitectura de Soluciones",
-    "dark": "Modo oscuro"
+    "dark": "Modo oscuro",
+    "mcontainer": "Aplicaciones Multi-contenedor",
+    "environmentDocker": "Variables de entorno y redes"
 }
