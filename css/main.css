@@ -441,8 +441,8 @@ svg {
   text-decoration: underline;
   text-underline-offset: 2.5px;
   text-decoration-thickness: 1.5px;
-  -webkit-text-decoration-color: #a11015;
-          text-decoration-color: #a11015;
+  -webkit-text-decoration-color: rgb(0,255,0,0.9);;
+          text-decoration-color: rgb(0,255,0,0.9);;
 }
 
 .fade-up-start {
@@ -1622,7 +1622,7 @@ textarea.form__field {
 
 .banner__box {
   position: relative;
-  margin-top: 1.875rem;
+  margin-top: 0.875rem;
   border-radius: 0.125rem;
   -webkit-transition: background-color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
@@ -2695,7 +2695,8 @@ body.rtl .portfolio-item__imgs-carousel-nav svg {
 .whatsapp:hover {
   background-color: #25D366;
   color: #FFF !important;
-  border: 1px solid #FFF;
+  transition: color 0.0s ease-in-out, background-color 0.0s ease-in-out, border-color 0.0s ease-in-out, box-shadow 0.0s ease-in-out, -webkit-box-shadow 0.0s ease-in-out !important;
+
 }
 
 .whatsbutton {
@@ -3119,7 +3120,7 @@ body.rtl .portfolio-item__imgs-carousel-nav svg {
   }
 }
 
-.site-subtitle {
+.site-subtitle, #display-text {
   font-size: 1.25rem;
   margin-bottom: 1.875rem;
   max-width: 40rem;
@@ -3162,7 +3163,7 @@ body.rtl .portfolio-item__imgs-carousel-nav svg {
 }
 
 @media (max-width: 480px) {
-  .site-subtitle {
+  .site-subtitle, #display-text {
     font-size: 1.25rem;
   }
 }
@@ -3441,7 +3442,7 @@ body.dark-theme.site--full-cover .banner__introductory, body.default-theme.site-
   color: #F4F6FB;
 }
 body.dark-theme .banner__full-cover-overlay, body.default-theme .banner__full-cover-overlay {
-  background-color: rgba(20, 20, 20, 0.75);
+  background-color: rgba(20, 20, 20, 0.80);
 }
 body.dark-theme .about__img-bg, body.default-theme .about__img-bg {
   background-color: #191919;

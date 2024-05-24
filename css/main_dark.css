@@ -1614,10 +1614,12 @@
             flex: 1 0 auto;
     position: relative;
   }
-  
+  #display-text {
+    color: white;
+  }
   .banner__box {
     position: relative;
-    margin-top: 1.875rem;
+    margin-top: 0.875rem;
     border-radius: 0.125rem;
     -webkit-transition: background-color 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out;
@@ -2690,7 +2692,8 @@
   .whatsapp:hover {
     background-color: #25D366;
     color: #FFF !important;
-    border: 1px solid #FFF;
+    transition: color 0.0s ease-in-out, background-color 0.0s ease-in-out, border-color 0.0s ease-in-out, box-shadow 0.0s ease-in-out, -webkit-box-shadow 0.0s ease-in-out !important;
+
   }
   
   .whatsbutton {
@@ -3114,7 +3117,7 @@
     }
   }
   
-  .site-subtitle {
+  .site-subtitle, #display-text {
     font-size: 1.25rem;
     margin-bottom: 1.875rem;
     max-width: 40rem;
@@ -3157,7 +3160,7 @@
   }
   
   @media (max-width: 480px) {
-    .site-subtitle {
+    .site-subtitle, #display-text {
       font-size: 1.25rem;
     }
   }
