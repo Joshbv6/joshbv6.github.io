@@ -43,7 +43,11 @@
   <!-- Google Material Icons -->
   <link href="./src_files/icon" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=VT323&display=swap" rel="stylesheet">
   <!-- Google fonts -->
   <style>
     #hidden-text, #display-presentation, #display-presentation{
@@ -62,6 +66,8 @@
       padding-bottom: 6px;
       margin-bottom: -20px;
       margin-top: 10px;
+      font-size: 30px;
+      font-family: 'VT323';
     }
     
 
@@ -75,16 +81,17 @@
         content: '';
         position: absolute;
         bottom: 10px;
-        left: 43.5px;
+        left: 14px;
         width: 0;
         height: 2px;
-        background-color: white;
+        background-color: transparent;
         transition: width 0.2s ease;
-        animation: blink 1s infinite;
+        /*animation: blink 2s infinite;*/
+        animation: none;
     }
 
     .underline:hover::before {
-      width: 55% !important;
+      width: 77% !important;
     }
 
     @keyframes blink {
@@ -94,15 +101,23 @@
     }
 
     .blinking {
-        animation: blink 1s infinite;
+        animation: blink 2s infinite;
         position: relative;
-        font-size: 25px;
-        top: 5px;
+        font-size: 30px;
+        top: 1px;
+    }
+
+    #whoami:hover, #whoami:focus {
+        animation: none;
+        .blinking {
+          animation: none;
+          color: rgb(132, 136, 132);
+        }
     }
     @media (max-width: 480px) {
 
       .blinking {
-        top: 3px;
+        top: 1px;
     }
       
       .underline::before {
@@ -120,7 +135,10 @@
     }
 
     @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Roboto+Mono&display=swap');
-  </style>
+
+
+
+</style>
   <!-- END SITE ICONS AND FONTS -->
 
   <!-- SITE STYLES -->
@@ -645,7 +663,7 @@
               </h1>
               <div class="banner__box">
                 <p class="site-subtitle welcome"><b lng-tag="welcome"></b><br>
-                    <button id="whoami" class="underline"><label class="blinking">>_</label> whoami</button>
+                    <button id="whoami" class="underline"><label class="blinking">$:whoami</label></button>
                   <p id="display-text">
                     <label lng-tag="presentation" id="display-presentation"></label><br>
                     <label lng-tag="privilege" id="display-privilege"></label>
