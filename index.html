@@ -262,7 +262,7 @@
 
     function whatsappsend() {
       var text = document.getElementById('whatstext').value;
-      var whatsapurl = "https://api.whatsapp.com/send?phone=++34622459745&text=" + text;
+      var whatsapurl = "https://api.whatsapp.com/send?phone=++34XXXXXXXXX&text=" + text;
       window.open(whatsapurl, '_blank');
     }
 
@@ -652,6 +652,11 @@
                     <img class="jarallax-img carousel-slide" src="./assets/red.jpg" alt="img4">
                       <!--  Uncomment this will create a carousel of photos
                 -->
+          </div>
+          <div class="codeRainWrapper">
+            <video class="codeRain" autoplay muted loop>
+              <source src="./src_files/codeRaining.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
         <div class="container-fluid">
@@ -2136,17 +2141,17 @@
           </header>
           <div class="contact__grid">
             <div class="fade-up-start" data-gc="fade-up">
-              <div class="contact-info">
+              <div class="contact-info" style="display: none;">
                 <div class="contact-info__icon">
                   <span class="material-icons" aria-hidden="true">alternate_email</span>
                 </div>
                 <span class="contact-info__text">joshuabanonvalera@hotmail.com</span>
               </div>
-              <div class="contact-info">
+              <div class="contact-info" style="display: none;">
                 <div class="contact-info__icon">
                   <span class="material-icons" aria-hidden="true">smartphone</span>
                 </div>
-                <span class="contact-info__text">(+34) 622 45 97 45</span>
+                <span class="contact-info__text"></span>
               </div>
               <div class="contact-info" style="display: none;">
                 <div class="contact-info__icon">
@@ -2155,7 +2160,7 @@
                 <span class="contact-info__text">382 Barker Four Street<br>Olympic Village, New
                   York</span>
               </div>
-              <div>
+              <div style="display: none;">
                 <div class="form-group whatsappno">
                   <textarea class="form-control form__field" rows="3" style="resize: none;" id="whatstext"
                     lng-tag="want_contact"></textarea>
@@ -2189,7 +2194,7 @@
             </div>
             <div class="fade-up-start" data-gc="fade-up">
               <form id="my-form" action="https://formspree.io/f/mdorkgyp" method="POST" enctype="multipart/form-data"
-                class="form-contact">
+                class="form-contact mailbox">
                 <span class="form-contact__surface"></span>
                 <div class="form-group">
                   <div id="form-live-region" class="form__message" role="alert" aria-atomic="true"

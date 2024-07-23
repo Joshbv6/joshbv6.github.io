@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -1726,6 +1726,11 @@ textarea.form__field {
   .about__img-bg {
     margin-left: 0.9375rem;
     width: 52%;
+  }
+
+  .mailbox {
+    position: relative;
+    right: 25%;
   }
 }
 @media (max-width: 770px) {
@@ -4372,3 +4377,17 @@ button.swiper-pagination-bullet {
 
 /*# sourceMappingURL=main.css.map*/
 
+.codeRain {
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+
+.codeRainWrapper{
+  position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Twice the width to accommodate two videos side by side */
+            height: 100%; /* Adjust the height as needed */
+            display: flex;
+}
