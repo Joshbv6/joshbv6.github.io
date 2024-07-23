@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     const alphabet = katakana + latin + nums;
 
-    const fontSize = 16; //16
+    let fontSize = 16; //16
+    if(canvas.width < 600){
+        fontSize = 12;
+    }
     const columns = canvas.width / 16 + 100;//fontSize ;
 
     const rainDrops = [];
