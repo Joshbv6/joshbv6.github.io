@@ -361,7 +361,9 @@
   <!-- DO NOT MODIFY -->
   <!-- End Facebook Pixel Code -->
   <script defer="" src="./src_files/main.js.descarga"></script>
+  <script src="./src_files/matrix.js"></script>
   <link id='theme_css' href="./css/main.css" rel="stylesheet">
+  <link href="./css/matrix.css" rel="stylesheet">
   <style id="inert-style">
     [inert] {
       pointer-events: none;
@@ -653,11 +655,7 @@
                       <!--  Uncomment this will create a carousel of photos
                 -->
           </div>
-          <div class="codeRainWrapper">
-            <video class="codeRain" autoplay muted loop>
-              <source src="./src_files/codeRaining.mp4" type="video/mp4">
-            </video>
-          </div>
+          <canvas id="Matrix" class="matrix-canvas"></canvas>
         </div>
         <div class="container-fluid">
           <div class="banner__grid banner__grid--fullscreen">

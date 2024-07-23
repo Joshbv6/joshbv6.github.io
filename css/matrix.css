@@ -1,0 +1,8 @@
+.Matrix{
+    opacity: 0.19 !important;
+}
+
+.matrix-canvas {
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 3s ease-in; /* Transition to opacity 1 over 2 seconds */
+}
