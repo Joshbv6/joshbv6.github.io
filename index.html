@@ -5,6 +5,15 @@
   <link rel="icon" type="image/png" href="/assets/images/favicon/favicon.ico">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-10HGYWBQ3X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-10HGYWBQ3X');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
   <link id="google-fonts-link" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&amp;family=Roboto:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -1342,6 +1351,20 @@
       </div>
       <script src="assets/js/main.umd.js"></script>
       <script src="assets/js/index.js"></script>
+      <script>
+        document.addEventListener('click', function (event) {
+          var target = event.target instanceof Element ? event.target : null;
+          var link = target && target.closest('a[href="#contact"], a[href^="mailto:"]');
+
+          if (!link) return;
+
+          var isEmailLink = link.getAttribute('href').startsWith('mailto:');
+          window.gtag('event', isEmailLink ? 'email_click' : 'contact_cta_click', {
+            link_type: isEmailLink ? 'email' : 'contact_cta',
+            link_text: link.textContent.trim().replace(/\s+/g, ' ').slice(0, 100)
+          });
+        });
+      </script>
     </div>
     <div class="frame-content"></div>
   </div>
