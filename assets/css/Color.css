@@ -1,0 +1,32 @@
+:root {
+    --accent-color: #E94D6A;
+    --accent2-color: #2EC5D8;
+    --accent2-5-color: #3DECE0;
+    --accent3-color: #A5B4CE;
+    --accent4-color: #F2B33D;
+    --accent5-color: rgb(0, 255, 0, 0.9);
+    --primary-color: #2375CB;
+    --primary-btn: #2563eb;
+    --dark-text-color: #FFFFFF;
+    --gray-text-color: #A9A9A9;
+    --button-padding-x: 16px;
+    --button-padding-y: 8px;
+    /*--font-family-body: "JetBrains Mono", monospace !important; /* 4 */
+    --font-family-body: 'Roboto', sans-serif;
+    --light-text-color: #F5F5F5;
+    --dark-border-color: #2E2E2E;
+    --light-border-color: #D9D9D9;
+    --font-family-heading: 'Lato', sans-serif;
+    /*--font-family-heading: "IBM Plex Sans", sans-serif;*/
+    --button-rounded-radius: 8px;
+    --dark-background-color: #121212;
+    --light-background-color: #DFEFFF;
+    --medium-background-color: #ABCDEF;
+    --primary-button-text-color: #FFFFFF;
+    --secondary-button-bg-color: #1F1F1F;
+    --secondary-button-text-color: #FFFFFF;
+    --primary-button-hover-bg-color: #003A89;
+    --primary-button-hover-text-color: #FFFFFF;
+    --secondary-button-hover-bg-color: #333333;
+    --secondary-button-hover-text-color: #FFFFFF;
+}

@@ -1,0 +1,11 @@
+.hovered-element {
+    outline: #3871E0 dashed 2px;
+}
+
+.clicked-element {
+    outline: #3871E0 solid 2px;
+}
+
+.clicked-code-section {
+    border: #3B82F6 solid 2px;
+}
